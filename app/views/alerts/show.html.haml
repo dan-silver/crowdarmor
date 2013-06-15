@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Action type:
+  = @alert.action_type
+%p
+  %b Threshold:
+  = @alert.threshold
+%p
+  %b Data:
+  = @alert.data
+%p
+  %b User:
+  = @alert.user
+
+= link_to 'Edit', edit_alert_path(@alert)
+\|
+= link_to 'Back', alerts_path

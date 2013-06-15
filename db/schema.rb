@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130615220940) do
+ActiveRecord::Schema.define(:version => 20130615232741) do
 
   create_table "actions", :force => true do |t|
     t.string   "action_type"
@@ -23,6 +23,17 @@ ActiveRecord::Schema.define(:version => 20130615220940) do
   end
 
   add_index "actions", ["user_id"], :name => "index_actions_on_user_id"
+
+  create_table "alerts", :force => true do |t|
+    t.string   "action_type"
+    t.integer  "threshold"
+    t.string   "data"
+    t.integer  "user_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "alerts", ["user_id"], :name => "index_alerts_on_user_id"
 
   create_table "tweets", :force => true do |t|
     t.integer  "user_id"

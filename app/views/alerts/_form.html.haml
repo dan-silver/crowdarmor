@@ -1,0 +1,11 @@
+= simple_form_for(@alert) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :action_type, collection: ['SMS', 'Email'], default: ['SMS']
+
+    = f.input :threshold
+    = f.input :data
+
+  .form-actions
+    = f.button :submit

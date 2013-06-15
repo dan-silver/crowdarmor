@@ -1,4 +1,7 @@
 Crowdarmor::Application.routes.draw do
+  resources :alerts
+
+
   get "tweet/processed"
 
   root :to => "home#index"

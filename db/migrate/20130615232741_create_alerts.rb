@@ -1,6 +1,6 @@
-class CreateActions < ActiveRecord::Migration
+class CreateAlerts < ActiveRecord::Migration
   def change
-    create_table :actions do |t|
+    create_table :alerts do |t|
       t.string :action_type
       t.integer :threshold
       t.string :data
@@ -8,6 +8,6 @@ class CreateActions < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_index :actions, :user_id
+    add_index :alerts, :user_id
   end
 end
