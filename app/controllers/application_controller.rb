@@ -3,7 +3,9 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
   helper_method :user_signed_in?
   helper_method :correct_user?
-
+  def nav_link(link_text, link_path)
+    class_name = current_page?(link_path) ? 'current' : ''
+  end
   private
     def current_user
       begin

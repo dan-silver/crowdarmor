@@ -1,10 +1,18 @@
-= link_to "Crowdarmor", root_path, :class => 'brand'
-%ul.nav
-  - if user_signed_in?
-    %li
-      Logged in as #{current_user.name}
-    %li
-      = link_to 'Logout', signout_path
-  - else
-    %li
-      = link_to 'Login', signin_path
+.navbar.navbar-inverse.navbar-fixed-top
+  .navbar-inner
+    .container
+      %button.btn.btn-navbar{:"data-toggle"=>"collapse", :"data-target"=>".nav-collapse"}
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      =link_to 'Crowd Armor', root_path, :class=>"brand"
+      .nav-collapse.collapse
+        %ul.nav
+          =nav_link 'foo', '/foo'
+        .pull-right
+          %ul.nav
+            - if user_signed_in?
+              %li= link_to current_user.name, current_user
+              %li= link_to 'Logout', signout_path
+            - else
+              = link_to 'Sign in', signin_path, :class=>"btn btn-info"
