@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user: 
+  tweet_id: MyString
+  body: MyText
+  score: 1
+
+two:
+  user: 
+  tweet_id: MyString
+  body: MyText
+  score: 1
