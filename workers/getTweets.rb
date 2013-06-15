@@ -29,7 +29,7 @@ puts ''
 @client.track(handles_with_at) do |status|
   puts ''
   puts 'Processing new tweet'
-  if handles.include? status.in_reply_to_screen_name # gonna process it
+  if handles.include? status.in_reply_to_screen_name and status.in_reply_to_status_id # gonna process it
     message = {
       :screen_name => status.in_reply_to_screen_name,
       :text => status.text,
