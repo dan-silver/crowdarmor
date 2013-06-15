@@ -17,6 +17,7 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  font-family: 'Open Sans', sans-serif !important;
 }
 .trans {
   background-color: rgba(238, 238, 238, 0.78);
@@ -28,4 +29,15 @@ body {
   -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
   -moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
   box-shadow: 0 1px 2px rgba(0,0,0,.15);
+}
+
+.home .row {
+	margin-bottom: 30px;
+}
+.trans p {
+  font-size: 22px;
+  line-height: 1em;
+}
+.center {
+	text-align: center;
 }
