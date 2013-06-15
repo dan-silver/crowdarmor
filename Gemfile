@@ -36,3 +36,15 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'debugger'
+
+gem "thin", ">= 1.5.0"
+gem "haml-rails", ">= 0.4"
+gem "html2haml", ">= 1.0.1", :group => :development
+gem "less-rails", ">= 2.2.6", :group => :assets
+gem "twitter-bootstrap-rails", ">= 2.2.4", :group => :assets
+gem "libv8", ">= 3.11.8"
+gem "therubyracer", ">= 0.11.3", :group => :assets, :platform => :ruby, :require => "v8"
+gem "sendgrid", ">= 1.0.1"
+gem "omniauth", ">= 1.1.3"
+gem "omniauth-twitter"
+gem "simple_form", ">= 2.1.0"
