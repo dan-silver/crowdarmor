@@ -1,5 +1,6 @@
 class TweetController < ApplicationController
   def processed
+    
   	tweet = Tweet.new
   	tweet.score = params[:score]
   	tweet.tweet_id = params[:tweet_id]
@@ -12,6 +13,16 @@ class TweetController < ApplicationController
   	render :json => tweet.save
   end
 
+  def index
+    if not current_user
+      redirect_to "/"
+    else
+      @tweets = current_user.tweets
+      render "tweet/index"
+    end
+  end
+
+
   private
   def save_original_tweet(tweet)
     unless Tweet.where(:tweet_id => tweet.tweet_id).count > 0
@@ -23,12 +34,5 @@ class TweetController < ApplicationController
       primary.body = Twitter.status(tweet.tweet_id).text #twitter gem here
     end
   end
-  def index
-  	if not current_user
-  	  redirect_to "/"
-  	else
-  	  @tweets = current_user.tweets
-  	  render "tweet/index"
-    end
-  end
+
 end
