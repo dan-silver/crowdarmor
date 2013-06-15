@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  action_type: MyString
+  threshold: 1
+  data: MyString
+  user: 
+
+two:
+  action_type: MyString
+  threshold: 1
+  data: MyString
+  user: 
