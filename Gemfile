@@ -13,6 +13,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 gem 'jquery-rails'
+gem 'twitter'
 gem 'iron_worker_ng'
 gem "thin", ">= 1.5.0"
 gem "haml-rails", ">= 0.4"

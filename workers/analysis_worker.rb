@@ -12,7 +12,7 @@ searchKeys = ['hack', 'fake', "hacked"]
 ironmq = IronMQ::Client.new :token => "f29MgpP0JbVlnDJb0ii7Cmzkwg8", :project_id => "51bc92fd2267d85283001145"
 queue = ironmq.queue "tweets"
 begin
-  if queue.size
+  if queue.size != 0
     puts 'Starting analysis'
     item = queue.get
     body = JSON.parse(item.body)
