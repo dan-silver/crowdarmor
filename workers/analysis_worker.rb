@@ -40,5 +40,5 @@ begin
 
     item.delete
   end
-  sleep(10)
+  sleep(1)
 end while not false
