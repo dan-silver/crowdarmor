@@ -1,0 +1,14 @@
+.row
+  .span7.trans
+    %h1 Scanned Tweets
+    -if @tweets.empty?
+      %p.alert We couldn't find any of your tweets.
+    -else
+      %table.table.table-bordered.table-hover
+        %tr
+          %th Tweet
+          %th Score
+        -@tweets.each do |tweet|
+          %tr
+            %td=tweet.body
+            %td=tweet.score
