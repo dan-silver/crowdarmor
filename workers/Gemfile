@@ -2,4 +2,5 @@ source 'http://rubygems.org'
 group :extra do
   gem 'tweetstream'
   gem 'iron_mq'
+  gem 'alchemy-api-rb'
 end

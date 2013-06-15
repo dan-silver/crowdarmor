@@ -2,6 +2,8 @@ GEM
   remote: http://rubygems.org/
   specs:
     addressable (2.3.4)
+    alchemy-api-rb (0.2.1)
+      faraday (~> 0.8.1)
     cookiejar (0.3.0)
     daemons (1.1.9)
     em-http-request (1.0.3)
@@ -50,5 +52,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  alchemy-api-rb
   iron_mq
   tweetstream
