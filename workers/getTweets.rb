@@ -1,3 +1,5 @@
+puts 'Starting getTweets worker...'
+
 require "tweetstream"
 require "iron_mq"
 require 'json'
@@ -12,21 +14,27 @@ end
 ironmq = IronMQ::Client.new :token => "f29MgpP0JbVlnDJb0ii7Cmzkwg8", :project_id => "51bc92fd2267d85283001145"
 queue = ironmq.queue "tweets"
 
-params = params || {:handles => ['BarackObama']} # for local testing
-handles = params[:handles]
+if params
+  handles = params['handles']
+else
+  handles = ['BarackObama']
+end
+
 handles_with_at = handles.map {|h| '@' + h}
 puts 'Streaming the following twitter handles:'
-puts handles
-puts
+puts handles.to_s
+puts ''
 
 @client = TweetStream::Client.new
 @client.track(handles_with_at) do |status|
-  puts
+  puts ''
   puts 'Processing new tweet'
-  screen_names = status.user_mentions.collect(&:screen_name)
-  cur_name = handles & screen_names # get array intersection
-  if cur_name.any?
-    message = {:screen_name => cur_name.first, :text => status.text}.to_json
+  if handles.include? status.in_reply_to_screen_name # gonna process it
+    message = {
+      :screen_name => status.in_reply_to_screen_name,
+      :text => status.text,
+      :tweet_id => status.in_reply_to_status_id
+    }.to_json
     puts message
     queue.post(message)
   else
