@@ -5,14 +5,15 @@ class ApplicationController < ActionController::Base
   helper_method :correct_user?
   before_filter :launch_workers
 
-  @running_workers = false
+  @@running_workers = false
 
   def nav_link(link_text, link_path)
     class_name = current_page?(link_path) ? 'current' : ''
   end
   private
     def launch_workers
-      WorkerLauncher.launch_workers unless @running_workers
+      WorkerLauncher.launch_workers unless @@running_workers
+      @@running_workers = true
     end
     def current_user
       begin
