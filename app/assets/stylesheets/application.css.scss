@@ -34,7 +34,7 @@ body {
 	margin-bottom: 30px;
 }
 .trans p {
-  font-size: 22px;
+  font-size: 35px;
   line-height: 1em;
 }
 .center {
@@ -49,4 +49,12 @@ body {
 .span-center {
   float: none;
   margin: 0px auto;
+}
+.btn-jumbo {
+  padding: 18px 24px;
+  font-size: 30px;
+  line-height: normal;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
 }
