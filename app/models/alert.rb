@@ -1,6 +1,7 @@
 class Alert < ActiveRecord::Base
   belongs_to :user
   attr_accessible :action_type, :data, :threshold
+  after_save :check_if_first
 
   def launch(tweet)
     case self.action_type
@@ -12,7 +13,11 @@ class Alert < ActiveRecord::Base
       Notifier.alert_email(self.data, tweet).deliver
     end
   end
-
+  def check_if_first
+    if self.user.size == 1
+      self.user.getPreviousTweets(self.user)
+    end
+  end
   def self.valid_types
     [
       'SMS',
