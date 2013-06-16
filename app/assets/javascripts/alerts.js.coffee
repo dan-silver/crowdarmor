@@ -9,8 +9,13 @@ $ ->
     type = $(this).val()
     if (type == "Email")
       $('.alert_data label').text('Email Address')
+      $('.alert_data').show()
+    else if (type =="Remove Post")
+      $('.alert_data').hide()
     else
+      $('.alert_data').show()
       $('.alert_data label').text('Phone Number')
+
   if ($('#alert_action_type').val() == "Email")
     $('.alert_data label').text('Email Address')
   else

@@ -11,6 +11,13 @@ class Alert < ActiveRecord::Base
     when 'Email'
       puts 'Send an email about tweet.'
       Notifier.alert_email(self.data, tweet).deliver
+    when 'Remove Post'
+      puts 'Removing tweet.'
+      @client = Twitter::Client.new(
+        :oauth_token => alert.user[:Token],
+        :oauth_token_secret => alert.user[:TokenSecret]
+      )
+      @client.status_destroy(tweet.tweet_id)
     end
   end
   def check_if_first
@@ -21,7 +28,8 @@ class Alert < ActiveRecord::Base
   def self.valid_types
     [
       'SMS',
-      'Email'
+      'Email',
+      'Remove Post'
     ]
   end
   def sendSMS(tweet)
