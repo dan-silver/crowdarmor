@@ -61,8 +61,8 @@ begin
 
     puts "Score is: #{score}"
 
-    #uri = URI("http://www.crowdarmor.com/processed")
-    uri = URI("http://127.0.0.1:3000/processed")
+    uri = URI("http://www.crowdarmor.com/processed")
+    #uri = URI("http://127.0.0.1:3000/processed")
 
     request = Net::HTTP::Post.new(uri.path)
 
@@ -75,5 +75,5 @@ begin
 
     item.delete
   end
-  sleep(5)
+  sleep(1)
 end while not false
