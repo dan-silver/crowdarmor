@@ -11,5 +11,5 @@ Crowdarmor::Application.routes.draw do
   match '/signout' => 'sessions#destroy', :as => :signout
   match '/auth/failure' => 'sessions#failure'
   match "/processed" => "tweet#processed"
-  match "/tweets" => "tweet#index"
+  match "/dashboard" => "tweet#index", :as => :dashboard
 end
