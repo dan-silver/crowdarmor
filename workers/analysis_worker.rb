@@ -18,6 +18,7 @@ begin
     puts
     puts 'Starting analysis of another tweet.'
     item = queue.get
+    next if not item
     body = JSON.parse(item.body)
     text = body["text"]
 
