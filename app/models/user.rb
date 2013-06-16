@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
       #puts pp auth
       user.provider = auth['provider']
       user.uid = auth['uid']
-      user.Twitter_Handle = auth['info']['nickname'] || ""
+      user.twitter_handle = auth['info']['nickname'] || ""
       user.Token = auth['extra']['access_token'].params["oauth_token"] || nil
       user.TokenSecret = auth['extra']['access_token'].params["oauth_token_secret"] || nil
       if auth['extra']
