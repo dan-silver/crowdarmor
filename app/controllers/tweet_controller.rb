@@ -22,8 +22,6 @@ class TweetController < ApplicationController
 
     tweet.user.check_alerts(tweet)
 
-    WorkerLauncher.launch_tweet_crawler
-
     render :json => res
   end
 
