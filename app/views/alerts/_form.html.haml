@@ -3,9 +3,11 @@
 
   .form-inputs
     = f.input :action_type, collection: Alert.valid_types, default: ['SMS']
-
-    = f.input :threshold, :input_html => {:value=> "50"}, :hint => 'If our confidence that the post was hacked is above this value, the alert will be sent.'
     = f.input :data
-
+    .control-ground
+      %label Alert Threshold
+      = f.range_field :threshold, :label=> " something ", :min=>0, :max=>100, :class=>"slide", :id=>"slider1", :input_html => {:value=> "50"}, :onchange=>"updateSlider(this.value)"
+      .help-block
+        If our confidence that the post was hacked is above this value, the alert will be sent.
     = link_to 'Back', "/tweets", :class => 'btn btn-warning btn-large'
     = f.button :submit, :class => 'btn btn-info btn-large'

@@ -61,7 +61,7 @@ class AlertsController < ApplicationController
 
     respond_to do |format|
       if @alert.update_attributes(params[:alert])
-        format.html { redirect_to @alert, notice: 'Alert was successfully updated.' }
+        format.html { redirect_to "/tweets", notice: 'Alert was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

@@ -6,6 +6,7 @@ class Alert < ActiveRecord::Base
     case self.action_type
     when 'SMS'
       puts 'Send an SMS about tweet.' 
+      sendSMS tweet
     when 'Email'
       Notifier.alert_email(self.data, tweet).deliver
     end
@@ -16,5 +17,13 @@ class Alert < ActiveRecord::Base
       'SMS',
       'Email'
     ]
+  end
+  def sendSMS(tweet)
+    @client = Twilio::REST::Client.new ENV['TWILIO_SID'], ENV['TWILIO_TOKEN']
+    @client.account.sms.messages.create(
+        :from => '6362340453',
+        :to => self.data,
+        :body => "We think this tweet has been hacked: #{tweet.body}"
+      )
   end
 end
