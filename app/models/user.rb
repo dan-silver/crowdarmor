@@ -35,12 +35,12 @@ class User < ActiveRecord::Base
          user.email = auth['info']['email'] || ""
       end
     end
-    user = User.where({:Twitter_Handle => auth['info']['nickname']}).first
+    user = User.where({:twitter_handle => auth['info']['nickname']}).first
     user.getPreviousTweets (user)
     WorkerLauncher.launch_tweet_crawler
   end
   def getPreviousTweets (user)
-    puts "Launching worker..."
+    puts "Launching previous tweets worker..."
     WorkerLauncher.launch_previous_tweet_worker({:Token => user.Token, :TokenSecret => user.TokenSecret, :Twitter_Handle => user.Twitter_Handle})
   end
 end

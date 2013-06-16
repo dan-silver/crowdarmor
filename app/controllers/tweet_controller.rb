@@ -13,7 +13,7 @@ class TweetController < ApplicationController
   	tweet.score = params[:score]
   	tweet.tweet_id = params[:tweet_id]
   	tweet.body = params[:body]
-  	tweet.user = User.where(:Twitter_Handle => params[:Twitter_Handle]).first
+  	tweet.user = User.where(:twitter_handle => params[:Twitter_Handle]).first
     tweet.type = 'reply'
 
     update_original_tweet(tweet)
