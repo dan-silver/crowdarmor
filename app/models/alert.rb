@@ -14,7 +14,7 @@ class Alert < ActiveRecord::Base
     end
   end
   def check_if_first
-    if self.user.size == 1
+    if self.user.alerts.size == 1
       self.user.getPreviousTweets(self.user)
     end
   end
