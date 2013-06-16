@@ -26,6 +26,7 @@ class TweetController < ApplicationController
     if not current_user
       redirect_to "/"
     else
+      @alerts = current_user.alerts
       @tweets = current_user.tweets.where(:tweet_type => 'primary')
       render "tweet/index"
     end
@@ -44,8 +45,5 @@ class TweetController < ApplicationController
       primary.body = Twitter.status(tweet.tweet_id).text #twitter gem here
       primary.save
     end
-
-    #tweet.primary.calculate_score
-
   end
 end

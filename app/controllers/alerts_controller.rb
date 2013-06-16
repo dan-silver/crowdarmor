@@ -41,10 +41,11 @@ class AlertsController < ApplicationController
   # POST /alerts.json
   def create
     @alert = Alert.new(params[:alert])
+    @alert.user = current_user
 
     respond_to do |format|
       if @alert.save
-        format.html { redirect_to @alert, notice: 'Alert was successfully created.' }
+        format.html { redirect_to "/tweets", notice: 'Alert was successfully created.' }
         format.json { render json: @alert, status: :created, location: @alert }
       else
         format.html { render action: "new" }
@@ -76,7 +77,7 @@ class AlertsController < ApplicationController
     @alert.destroy
 
     respond_to do |format|
-      format.html { redirect_to alerts_url }
+      format.html { redirect_to "/tweets" }
       format.json { head :no_content }
     end
   end

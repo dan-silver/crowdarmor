@@ -4,8 +4,8 @@
   .form-inputs
     = f.input :action_type, collection: Alert.valid_types, default: ['SMS']
 
-    = f.input :threshold
+    = f.input :threshold, :input_html => {:value=> "50"}, :hint => 'If our confidence that the post was hacked is above this value, the alert will be sent.'
     = f.input :data
 
-  .form-actions
-    = f.button :submit
+    = link_to 'Back', "/tweets", :class => 'btn btn-warning btn-large'
+    = f.button :submit, :class => 'btn btn-info btn-large'
