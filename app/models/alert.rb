@@ -37,7 +37,7 @@ class Alert < ActiveRecord::Base
     @client.account.sms.messages.create(
         :from => '6362340453',
         :to => self.data,
-        :body => "We think this tweet has been hacked: #{tweet.primary.body}"
+        :body => "CrowdArmor Alert!  We think this tweet has been hacked: #{tweet.primary.body}"
       )
   end
 end
