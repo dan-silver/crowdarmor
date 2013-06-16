@@ -11,6 +11,7 @@ search_keys = ['hack', 'fake', "hacked"]
 
 ironmq = IronMQ::Client.new :token => "f29MgpP0JbVlnDJb0ii7Cmzkwg8", :project_id => "51bc92fd2267d85283001145"
 queue = ironmq.queue "tweets"
+
 begin
   if queue.size != 0
 
@@ -41,6 +42,16 @@ begin
     else
         score = 0
     end
+
+
+    # bonus score if contains a search key
+    search_keys.each do |key|
+        if text.include? key
+            score += 21 # lucky number for more accurate results
+        end
+    end
+
+    score = 100 if score > 100
 
     puts "Score is: #{score}"
 

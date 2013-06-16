@@ -29,7 +29,8 @@ class User < ActiveRecord::Base
          user.email = auth['info']['email'] || ""
       end
     end
-    user.getPreviousTweets
+    user.getPreviousTweets   
+    WorkerLauncher.launch_tweet_crawler
   end
   def getPreviousTweets
     '''tweets = Twitter.user_timeline(self.Twitter_Handle)
