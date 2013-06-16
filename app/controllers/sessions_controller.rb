@@ -14,7 +14,8 @@ class SessionsController < ApplicationController
 # http://guides.rubyonrails.org/security.html#session-fixation-countermeasures
     reset_session
     session[:user_id] = user.id
-    redirect_to dashboard_path
+    flash[:success] = "Welcome to CrowdArmor! Set up your first alert so you can be notified if your account is hacked."
+    redirect_to new_alert_path
     '''
     if user.email.blank?
       redirect_to edit_user_path(user), :alert => "Please enter your email address."
