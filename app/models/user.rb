@@ -17,16 +17,19 @@ class User < ActiveRecord::Base
   end
 
   def self.create_with_omniauth(auth)
-    create! do |user|
+    user = create! do |user|
+      #puts pp auth
       user.provider = auth['provider']
       user.uid = auth['uid']
       user.Twitter_Handle = auth['info']['nickname'] || ""
-      if auth['info']
+      user.Token = auth['extra']['access_token'].params["oauth_token"] || nil
+      user.TokenSecret = auth['extra']['access_token'].params["oauth_token_secret"] || nil
+      if auth['extra']
          user.name = auth['info']['name'] || ""
          user.email = auth['info']['email'] || ""
       end
     end
-    
+    user.getPreviousTweets   
     WorkerLauncher.launch_tweet_crawler
   end
   def getPreviousTweets
@@ -35,7 +38,12 @@ class User < ActiveRecord::Base
       Twitter.status(tweet.id)
     end
     '''
-    tweets = Twitter.mentions_timeline.each do |status|
+    puts "Getting previous tweets..."
+    @client = Twitter::Client.new(
+      :oauth_token => self.Token,
+      :oauth_token_secret => self.TokenSecret
+    )
+    tweets = @client.mentions_timeline.each do |status|
       if self.Twitter_Handle == status.in_reply_to_screen_name and status.in_reply_to_status_id # gonna process it
         message = {
           :screen_name => status.in_reply_to_screen_name,

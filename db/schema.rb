@@ -11,7 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
+<<<<<<< HEAD
+ActiveRecord::Schema.define(:version => 20130616052542) do
+=======
 ActiveRecord::Schema.define(:version => 20130615232741) do
+>>>>>>> e5a78ee205047a19edab1c107a88cf04d5e70c2d
 
   create_table "alerts", :force => true do |t|
     t.string   "action_type"
@@ -44,6 +48,8 @@ ActiveRecord::Schema.define(:version => 20130615232741) do
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
     t.string   "Twitter_Handle"
+    t.string   "Token"
+    t.string   "TokenSecret"
   end
 
 end
