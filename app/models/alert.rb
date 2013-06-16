@@ -8,6 +8,7 @@ class Alert < ActiveRecord::Base
       puts 'Send an SMS about tweet.' 
       sendSMS tweet
     when 'Email'
+      puts 'Send an email about tweet.'
       Notifier.alert_email(self.data, tweet).deliver
     end
   end

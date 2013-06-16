@@ -42,6 +42,16 @@ begin
         score = 0
     end
 
+
+    # bonus score if contains a search key
+    search_keys.each do |key|
+        if text.include? key
+            score += 21 # lucky number for more accurate results
+        end
+    end
+
+    score = 100 if score > 100
+
     puts "Score is: #{score}"
 
     #uri = URI("http://www.crowdarmor.com/processed")

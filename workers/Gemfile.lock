@@ -22,16 +22,12 @@ GEM
     faraday (0.8.7)
       multipart-post (~> 1.1)
     http_parser.rb (0.5.3)
-    httparty (0.11.0)
-      multi_json (~> 1.0)
-      multi_xml (>= 0.5.2)
     iron_core (0.6.2)
       rest (>= 2.2.0)
     iron_mq (4.0.3)
       iron_core (>= 0.5.1)
     mime-types (1.23)
     multi_json (1.7.7)
-    multi_xml (0.5.4)
     multipart-post (1.2.0)
     net-http-persistent (2.8)
     rest (2.6.3)
@@ -57,6 +53,5 @@ PLATFORMS
 
 DEPENDENCIES
   alchemy-api-rb
-  httparty
   iron_mq
   tweetstream
