@@ -25,5 +25,7 @@ class User < ActiveRecord::Base
       end
     end
   end
-
+  def getPreviousTweets
+    
+  end
 end
