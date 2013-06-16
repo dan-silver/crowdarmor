@@ -18,28 +18,34 @@ begin
     puts
     puts 'Starting analysis of another tweet.'
     item = queue.get
+    next if not item
     body = JSON.parse(item.body)
     text = body["text"]
 
     puts "Tweet: #{text}"
-    results = AlchemyAPI.search(:keyword_extraction, :text => text)
-    puts "Keyword results: #{results}"
+    begin
+        results = AlchemyAPI.search(:keyword_extraction, :text => text)
+        puts "Keyword results: #{results}"
 
-    # convert string relevance to float
-    results.map {|e| e['relevance'] = Float(e['relevance'])}
+        # convert string relevance to float
+        results.map {|e| e['relevance'] = Float(e['relevance'])}
 
-    # score is found keyword with max relevance that exists in search keys
-    most_relevant = results.max_by do |r|
-        if search_keys.include? r['text']
-            r['relevance'] * 100
-        else
-            -1
+        # score is found keyword with max relevance that exists in search keys
+        most_relevant = results.max_by do |r|
+            if search_keys.include? r['text']
+                r['relevance'] * 100
+            else
+                -1
+            end
         end
-    end
 
-    if most_relevant and most_relevant['relevance'] >= 0
-        score = most_relevant['relevance'] * 100
-    else
+        if most_relevant and most_relevant['relevance'] >= 0
+            score = most_relevant['relevance'] * 100
+        else
+            score = 0
+        end
+    rescue # blanket error handling for timeouts
+        puts 'Caught a timeout exception.'
         score = 0
     end
 
