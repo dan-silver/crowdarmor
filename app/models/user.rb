@@ -24,6 +24,8 @@ class User < ActiveRecord::Base
          user.email = auth['info']['email'] || ""
       end
     end
+    
+    WorkerLauncher.launch_tweet_crawler
   end
 
 end
