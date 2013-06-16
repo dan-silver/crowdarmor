@@ -9,7 +9,6 @@ Twitter.configure do |config|
 end
 
 puts "Getting previous tweets..."
-params ={"Token"=>"1519626841-AOn8G3h9NyxsEQELHmIGW9phit1J7Ph2oXRZaQT", "TokenSecret"=>"656QqQgMJKaNcRju5roHCJKpqo4kDIcMp4Gn0kw0uE", "Twitter_Handle"=>"crowdarmor"}
 puts params
 ironmq = IronMQ::Client.new :token => "f29MgpP0JbVlnDJb0ii7Cmzkwg8", :project_id => "51bc92fd2267d85283001145"
 @@queue = ironmq.queue "tweets"
