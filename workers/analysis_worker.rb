@@ -33,10 +33,10 @@ begin
 
     Net::HTTP.post_form(uri, {
         :Twitter_Handle => body['screen_name'],
-        :score => 0,
+        :score => rand(100),
         :tweet_id => body['tweet_id'],
         :body => body['text']
-        })
+    })
 
     item.delete
   end

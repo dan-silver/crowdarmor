@@ -17,7 +17,7 @@ class TweetController < ApplicationController
 
     tweet.type = 'reply'
 
-    save_original_tweet(tweet)
+    update_original_tweet(tweet)
 
     render :json => tweet.save
   end
@@ -33,7 +33,7 @@ class TweetController < ApplicationController
 
 
   private
-  def save_original_tweet(tweet)
+  def update_original_tweet(tweet)
     if Tweet.where(:tweet_id => tweet.tweet_id, :tweet_type => 'primary').count == 0
       puts 'Determining primary tweet...'
       primary = Tweet.new
@@ -44,5 +44,8 @@ class TweetController < ApplicationController
       primary.body = Twitter.status(tweet.tweet_id).text #twitter gem here
       primary.save
     end
+
+    #tweet.primary.calculate_score
+
   end
 end
