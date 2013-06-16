@@ -14,12 +14,15 @@ class TweetController < ApplicationController
   	tweet.tweet_id = params[:tweet_id]
   	tweet.body = params[:body]
   	tweet.user = User.where(:Twitter_Handle => params[:Twitter_Handle]).first
-
     tweet.type = 'reply'
 
     update_original_tweet(tweet)
 
-    render :json => tweet.save
+    res = tweet.save
+
+    tweet.user.check_alerts(tweet)
+
+    render :json => res
   end
 
   def index

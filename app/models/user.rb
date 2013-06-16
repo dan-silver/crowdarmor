@@ -6,10 +6,10 @@ class User < ActiveRecord::Base
   has_many :tweets
   has_many :alerts
 
-  def check_actions(tweet)
+  def check_alerts(tweet)
     self.alerts.each do |alert|
       if tweet.score > alert.threshold
-        alert.send(tweet)
+        alert.launch(tweet)
       end
     end
   end

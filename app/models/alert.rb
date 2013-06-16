@@ -2,7 +2,7 @@ class Alert < ActiveRecord::Base
   belongs_to :user
   attr_accessible :action_type, :data, :threshold
 
-  def send(tweet)
+  def launch(tweet)
     case self.action_type
     when 'SMS'
       puts 'Send an SMS about tweet.' 
