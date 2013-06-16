@@ -7,7 +7,7 @@ require 'net/http'
 
 AlchemyAPI.key = '8da86f0a977a22e600739f6f693b39fddefbd503'
 
-search_keys = ['hack', 'fake', "hacked"]
+search_keys = ['hack', 'fake']
 
 ironmq = IronMQ::Client.new :token => "f29MgpP0JbVlnDJb0ii7Cmzkwg8", :project_id => "51bc92fd2267d85283001145"
 queue = ironmq.queue "tweets"
@@ -52,7 +52,7 @@ begin
 
     # bonus score if contains a search key
     search_keys.each do |key|
-        if text.include? key
+        if text.downcase.include? key
             score += 21 # lucky number for more accurate results
         end
     end

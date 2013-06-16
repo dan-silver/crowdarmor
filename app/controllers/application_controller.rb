@@ -3,10 +3,17 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
   helper_method :user_signed_in?
   helper_method :correct_user?
+  before_filter :launch_workers
+
+  @running_workers = false
+
   def nav_link(link_text, link_path)
     class_name = current_page?(link_path) ? 'current' : ''
   end
   private
+    def launch_workers
+      WorkerLauncher.launch_workers unless @running_workers
+    end
     def current_user
       begin
         @current_user ||= User.find(session[:user_id]) if session[:user_id]
