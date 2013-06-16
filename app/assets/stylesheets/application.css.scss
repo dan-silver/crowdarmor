@@ -22,7 +22,6 @@ body {
 .trans {
   background-color: rgba(238, 238, 238, 0.78);
   padding: 20px;
-  margin: 0 -20px;
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
   border-radius: 6px;
@@ -46,4 +45,8 @@ body {
 }
 .help-block {
   font-size: 13px !important;
+}
+.span-center {
+  float: none;
+  margin: 0px auto;
 }
