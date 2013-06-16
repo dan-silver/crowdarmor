@@ -41,9 +41,9 @@ ActiveRecord::Schema.define(:version => 20130616071136) do
     t.string   "email"
     t.string   "provider"
     t.string   "uid"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-    t.string   "twitter_handl"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.string   "twitter_handle"
     t.string   "Token"
     t.string   "TokenSecret"
   end
