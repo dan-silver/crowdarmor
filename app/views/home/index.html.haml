@@ -11,9 +11,13 @@
 .row
   .span7.trans.span-center.center
     %p
-      After identifying them, we 
+      We 
       %strong alert you
-      via text or email.  Set alerts based on our level of confidence of an attack.
+      if your account is hacked via text or
+      %strong automatically take action.
 .row
   .span7.trans.span-center.center
-    %a.btn.btn-info.btn-large More Information
+    %h1
+      =image_tag 'logo.png', :id => 'logo'
+      CrowdArmor
+    =link_to "Get Started", '/signin', :class => 'btn btn-info btn-large'
