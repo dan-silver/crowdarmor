@@ -10,7 +10,7 @@ class Alert < ActiveRecord::Base
       sendSMS tweet
     when 'Email'
       puts 'Send an email about tweet.'
-      Notifier.alert_email(self.data, tweet).deliver
+      Notifier.alert_email(self.data, tweet.primary).deliver
     when 'Remove Post'
       puts 'Removing tweet.'
       @client = Twitter::Client.new(
@@ -37,7 +37,7 @@ class Alert < ActiveRecord::Base
     @client.account.sms.messages.create(
         :from => '6362340453',
         :to => self.data,
-        :body => "We think this tweet has been hacked: #{tweet.body}"
+        :body => "We think this tweet has been hacked: #{tweet.primary.body}"
       )
   end
 end
