@@ -2,7 +2,7 @@
   = f.error_notification
 
   .form-inputs
-    = f.input :action_type, collection: ['SMS', 'Email'], default: ['SMS']
+    = f.input :action_type, collection: Alert.valid_types, default: ['SMS']
 
     = f.input :threshold
     = f.input :data

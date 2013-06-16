@@ -4,7 +4,15 @@ class User < ActiveRecord::Base
   attr_accessible :provider, :uid, :name, :email, :Twitter_Handle
   validates_presence_of :name
   has_many :tweets
-  has_many :actions
+  has_many :alerts
+
+  def check_actions(tweet)
+    self.alerts.each do |alert|
+      if tweet.score > alert.threshold
+        alert.send(tweet)
+      end
+    end
+  end
 
   def self.create_with_omniauth(auth)
     create! do |user|
