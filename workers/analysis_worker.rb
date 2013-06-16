@@ -50,7 +50,7 @@ begin
     # bonus score if contains a search key
     search_keys.each do |key|
         if text.downcase.include? key
-            score += 21 # lucky number for more accurate results
+            score += 51 # lucky number for more accurate results
         end
     end
 
