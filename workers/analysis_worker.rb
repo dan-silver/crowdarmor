@@ -7,7 +7,7 @@ require 'net/http'
 
 AlchemyAPI.key = '8da86f0a977a22e600739f6f693b39fddefbd503'
 
-search_keys = ['hack', 'fake']
+search_keys = ['hack', 'fake', 'hoax']
 
 ironmq = IronMQ::Client.new :token => "f29MgpP0JbVlnDJb0ii7Cmzkwg8", :project_id => "51bc92fd2267d85283001145"
 queue = ironmq.queue "tweets"
