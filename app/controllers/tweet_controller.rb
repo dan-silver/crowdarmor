@@ -27,6 +27,7 @@ class TweetController < ApplicationController
       redirect_to "/"
     else
       @tweets = current_user.tweets
+      @alerts = current_user.alerts
       render "tweet/index"
     end
   end

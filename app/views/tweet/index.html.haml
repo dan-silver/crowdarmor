@@ -1,5 +1,5 @@
 .row
-  .span7.trans
+  .span5.trans
     %h1 Scanned Tweets
     -if @tweets.empty?
       %p.alert We couldn't find any of your tweets.
@@ -12,3 +12,23 @@
           %tr
             %td=tweet.body
             %td=tweet.score
+  .span6.trans
+    %h1 Alerts
+    -if @alerts.empty?
+      %p.alert Set up alerts to be notified of hacked posts.
+    -else
+      %table.table.table-bordered.table-hover
+        %tr
+          %th Type
+          %th Contact
+          %th Threshold
+          %th
+        -@alerts.each do |alert|
+          %tr
+            %td=alert.action_type
+            %td=alert.data
+            %td=alert.threshold
+            %td
+              =link_to 'Edit', edit_alert_path(alert), :class=> 'btn btn-small btn-info edit-btn'
+              =link_to 'Delete', alert, :method => :delete, :data => { :confirm => 'Are you sure?' }
+    = link_to 'Set up an Alert', new_alert_path, :class => 'btn btn-info btn-large'

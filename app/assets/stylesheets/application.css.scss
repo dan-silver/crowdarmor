@@ -8,8 +8,8 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require_self
  *= require_tree .
+ *= require_self
 */
 body {
   background: url('/assets/bg.jpg') no-repeat center center fixed; 
@@ -40,4 +40,10 @@ body {
 }
 .center {
 	text-align: center;
+}
+.edit-btn{ 
+  margin-right: 10px;
+}
+.help-block {
+  font-size: 13px !important;
 }
