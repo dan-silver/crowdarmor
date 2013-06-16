@@ -1,10 +1,18 @@
 require 'json'
 
 class User < ActiveRecord::Base
-  attr_accessible :provider, :uid, :name, :email, :Twitter_Handle
+  attr_accessible :provider, :uid, :name, :email, :twitter_handle
   validates_presence_of :name
   has_many :tweets
   has_many :alerts
+
+  def Twitter_Handle
+    self.twitter_handle
+  end
+
+  def Twitter_Handle=(shit)
+    self.twitter_handle=shit
+  end
 
   def check_alerts(tweet)
     self.alerts.each do |alert|
