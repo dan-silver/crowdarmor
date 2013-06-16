@@ -3,4 +3,5 @@ group :extra do
   gem 'tweetstream'
   gem 'iron_mq'
   gem 'alchemy-api-rb'
+  gem 'twitter'
 end

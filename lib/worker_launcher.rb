@@ -23,6 +23,10 @@ class WorkerLauncher
     @@current_analysis = @@client.tasks.create("analysis_worker")
   end
 
+  def self.launch_previous_tweet_worker (params)
+    @@client.tasks.create("previousTweets", params)
+  end
+
   def self.launch_workers
     self.launch_analysis_worker
     self.launch_tweet_crawler
