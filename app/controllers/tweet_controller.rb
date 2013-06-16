@@ -17,7 +17,7 @@ class TweetController < ApplicationController
 
     tweet.type = 'reply'
 
-    save_original_tweet(tweet)
+    update_original_tweet(tweet)
 
     render :json => tweet.save
   end
@@ -26,22 +26,24 @@ class TweetController < ApplicationController
     if not current_user
       redirect_to "/"
     else
-      @tweets = current_user.tweets
       @alerts = current_user.alerts
+      @tweets = current_user.tweets.where(:tweet_type => 'primary')
       render "tweet/index"
     end
   end
 
 
   private
-  def save_original_tweet(tweet)
-    unless Tweet.where(:tweet_id => tweet.tweet_id).count > 0
+  def update_original_tweet(tweet)
+    if Tweet.where(:tweet_id => tweet.tweet_id, :tweet_type => 'primary').count == 0
+      puts 'Determining primary tweet...'
       primary = Tweet.new
       primary.tweet_id = tweet.tweet_id
       primary.score = tweet.score # aggregates starts as one reply score
       primary.user = tweet.user
       primary.type = 'primary'
       primary.body = Twitter.status(tweet.tweet_id).text #twitter gem here
+      primary.save
     end
   end
 end
