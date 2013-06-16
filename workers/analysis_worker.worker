@@ -1,0 +1,7 @@
+runtime "ruby" # The runtime the code should be run under: ruby, python, php, or sh
+
+exec "analysis_worker.rb" # The file to execute when a task is queued. Your worker's entry point
+#gemfile 'Gemfile', :default, :extra
+
+#remote #This forces to install all your dependencies in IronWorker environment.
+#file "config.json" # The path to a file to upload as a dependency of the worker; just leave this out if you don't have any dependencies.
