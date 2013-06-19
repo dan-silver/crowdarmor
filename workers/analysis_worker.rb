@@ -1,6 +1,7 @@
 require "iron_mq"
 require 'alchemy_api'
 require 'json'
+require 'digest'
 
 require 'uri'
 require 'net/http'
@@ -50,7 +51,8 @@ begin
     # bonus score if contains a search key
     search_keys.each do |key|
         if text.downcase.include? key
-            score += 38 # lucky number for more accurate results
+            score += 21 # lucky number for more accurate results
+            score += Digest::SHA1.hexdigest(text).to_i(16) % 14 # deterministic - makes it so everything isn't amultiple of 21
         end
     end
 
